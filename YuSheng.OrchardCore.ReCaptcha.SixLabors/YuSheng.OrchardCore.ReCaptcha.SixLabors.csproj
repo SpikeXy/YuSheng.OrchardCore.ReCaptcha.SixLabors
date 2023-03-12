@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<!-- NuGet properties-->
+		<Title>OrchardCore ReCaptcha SixLabors</Title>
+		<Description>
+			OrchardCore ReCaptcha plugin by using SixLaborsCaptcha 
+		</Description>
+		<PackageTags> OrchardCoreCMS,yusheng,cms</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>0.0.1</Version>
+		<Authors>spike</Authors>
+		<Company>spike</Company>
+		<Copyright>spike 2023</Copyright>
+		<PackageProjectUrl>https://github.com/SpikeXy/YuSheng.OrchardCore.ReCaptcha.SixLabors</PackageProjectUrl>
+		<!--<PackageIcon>horse-face-front-view-sketch.png</PackageIcon>-->
+		<!--<PackageReadmeFile>../README.md</PackageReadmeFile>-->
+		<RepositoryUrl>https://github.com/SpikeXy/YuSheng.OrchardCore.ReCaptcha.SixLabors</RepositoryUrl>
+		<AssemblyVersion>0.0.1</AssemblyVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="horse-face-front-view-sketch.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="OrchardCore.Abstractions" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
+	</ItemGroup>
+
+
+</Project>
