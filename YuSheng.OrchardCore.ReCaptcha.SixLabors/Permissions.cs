@@ -3,12 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using OrchardCore.Security.Permissions;
 
-namespace OrchardCore.Users
+namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
 {
     public class Permissions : IPermissionProvider
     {
-        public static readonly Permission ReCaptchaSixLabors
-                 = new Permission(nameof(ReCaptchaSixLabors), "Manage ReCaptchaSixLabors settings");
+        public static readonly Permission SixLaborsCaptcha
+                 = new Permission(nameof(SixLaborsCaptcha), "Manage SixLaborsCaptcha settings");
 
 
 
@@ -16,7 +16,7 @@ namespace OrchardCore.Users
         {
             return Task.FromResult(new[]
             {
-                ReCaptchaSixLabors
+                SixLaborsCaptcha
             }
             .AsEnumerable());
         }
@@ -28,7 +28,7 @@ namespace OrchardCore.Users
                 Name = "Administrator",
                 Permissions = new[]
                 {
-                    ReCaptchaSixLabors
+                    SixLaborsCaptcha
                 }
             };
         }

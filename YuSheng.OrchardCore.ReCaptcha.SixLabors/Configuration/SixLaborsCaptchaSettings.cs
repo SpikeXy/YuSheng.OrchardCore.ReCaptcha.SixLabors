@@ -1,15 +1,11 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Configuration
+﻿namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Configuration
 {
     public class SixLaborsCaptchaSettings
     {
-        
+        /// <summary>
+        /// The maximum detection value of an IP address.
+        /// </summary>
+        public int IpDetectionThreshold { get; set; } = 5;
 
     }
 }

@@ -1,22 +1,22 @@
 using System;
 using System.Threading.Tasks;
-using OrchardCore.ReCaptcha.Services;
 using OrchardCore.Users.Events;
+using YuSheng.OrchardCore.ReCaptcha.SixLabors.Services;
 
 namespace OrchardCore.ReCaptcha.Users.Handlers
 {
     public class PasswordRecoveryFormEventEventHandler : IPasswordRecoveryFormEvents
     {
-        private readonly ReCaptchaService _recaptchaService;
+        private readonly SixLaborsCaptchaService _sixLaborsCaptchaService;
 
-        public PasswordRecoveryFormEventEventHandler(ReCaptchaService recaptchaService)
+        public PasswordRecoveryFormEventEventHandler(SixLaborsCaptchaService sixLaborsReCaptchaService)
         {
-            _recaptchaService = recaptchaService;
+            _sixLaborsCaptchaService = sixLaborsReCaptchaService;
         }
 
         public Task RecoveringPasswordAsync(Action<string, string> reportError)
         {
-            return _recaptchaService.ValidateCaptchaAsync(reportError);
+            return _sixLaborsCaptchaService.ValidateCaptchaAsync(reportError);
         }
 
         public Task PasswordResetAsync(PasswordRecoveryContext context)
@@ -26,7 +26,7 @@ namespace OrchardCore.ReCaptcha.Users.Handlers
 
         public Task ResettingPasswordAsync(Action<string, string> reportError)
         {
-            return _recaptchaService.ValidateCaptchaAsync(reportError);
+            return _sixLaborsCaptchaService.ValidateCaptchaAsync(reportError);
         }
 
         public Task PasswordRecoveredAsync(PasswordRecoveryContext context)

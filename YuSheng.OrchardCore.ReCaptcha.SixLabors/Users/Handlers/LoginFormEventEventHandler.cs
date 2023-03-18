@@ -1,45 +1,46 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using OrchardCore.Users;
 using OrchardCore.Users.Events;
+using YuSheng.OrchardCore.ReCaptcha.SixLabors;
 using YuSheng.OrchardCore.ReCaptcha.SixLabors.Services;
 
 namespace OrchardCore.ReCaptcha.Users.Handlers
 {
     public class LoginFormEventEventHandler : ILoginFormEvent
     {
-        private readonly SixLaborsCaptchaService _reCaptchaService;
+        private readonly SixLaborsCaptchaService _sixLaborsCaptchaService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public LoginFormEventEventHandler(SixLaborsCaptchaService reCaptchaService)
+        public LoginFormEventEventHandler(IHttpContextAccessor httpContextAccessor,
+            SixLaborsCaptchaService sixLaborsReCaptchaService)
         {
-            _reCaptchaService = reCaptchaService;
+            _sixLaborsCaptchaService = sixLaborsReCaptchaService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public Task IsLockedOutAsync(IUser user) => Task.CompletedTask;
 
         public Task LoggedInAsync(IUser user)
         {
-            _reCaptchaService.ThisIsAHuman();
             return Task.CompletedTask;
         }
 
         public async Task LoggingInAsync(string userName, Action<string, string> reportError)
         {
-            if (_reCaptchaService.IsThisARobot())
-            {
-                await _reCaptchaService.ValidateCaptchaAsync(reportError);
-            }
+
+            var captchaString = _sixLaborsCaptchaService.GetCaptchaString();
+            _httpContextAccessor.HttpContext.Session.SetString(Constants.SixLaborsCaptchaHeaderName, captchaString);
         }
 
         public Task LoggingInFailedAsync(string userName)
         {
-            _reCaptchaService.MaybeThisIsARobot();
             return Task.CompletedTask;
         }
 
         public Task LoggingInFailedAsync(IUser user)
         {
-            _reCaptchaService.MaybeThisIsARobot();
             return Task.CompletedTask;
         }
     }

@@ -1,18 +1,18 @@
 using System;
 using System.Threading.Tasks;
-using OrchardCore.ReCaptcha.Services;
 using OrchardCore.Users;
 using OrchardCore.Users.Events;
+using YuSheng.OrchardCore.ReCaptcha.SixLabors.Services;
 
 namespace OrchardCore.ReCaptcha.Users.Handlers
 {
     public class RegistrationFormEventHandler : IRegistrationFormEvents
     {
-        private readonly ReCaptchaService _reCaptchaService;
+        private readonly SixLaborsCaptchaService _sixLaborsCaptchaService;
 
-        public RegistrationFormEventHandler(ReCaptchaService recaptchaService)
+        public RegistrationFormEventHandler(SixLaborsCaptchaService sixLaborsReCaptchaService)
         {
-            _reCaptchaService = recaptchaService;
+            _sixLaborsCaptchaService = sixLaborsReCaptchaService;
         }
 
         public Task RegisteredAsync(IUser user)
@@ -22,7 +22,7 @@ namespace OrchardCore.ReCaptcha.Users.Handlers
 
         public Task RegistrationValidationAsync(Action<string, string> reportError)
         {
-            return _reCaptchaService.ValidateCaptchaAsync(reportError);
+            return _sixLaborsCaptchaService.ValidateCaptchaAsync(reportError);
         }
     }
 }
