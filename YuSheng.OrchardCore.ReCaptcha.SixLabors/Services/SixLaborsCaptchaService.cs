@@ -3,7 +3,6 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.VisualBasic;
 using SixLabors.ImageSharp;
 using SixLaborsCaptcha.Core;
 using System;
@@ -64,44 +63,30 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Services
             var key = Extensions.GetUniqueKey(6);
             return key;
         }
-        public byte[] GetCaptchaPic()
+        public byte[] GetCaptchaPic(string key)
         {
             var slc = new SixLaborsCaptchaModule(new SixLaborsCaptchaOptions
             {
                 DrawLines = 7,
                 TextColor = new Color[] { Color.Blue, Color.Black },
             });
-            var key = GetCaptchaString();
             var bytes = slc.Generate(key);
             return bytes;
         }
 
-        public async Task<bool> ValidateCaptchaAsync(Action<string, string> reportError)
+        public Task<bool> ValidateCaptchaAsync(Action<string, string> reportError)
         {
-            //if (!_settings.IsValid())
-            //{
-            //    _logger.LogWarning("The ReCaptcha settings are not valid");
-            //    return false;
-            //}
+            var sessionCaptcha = _httpContextAccessor.HttpContext.Session.GetString(Constants.SixLaborsCaptchaName);
+            var captchaRequest = _httpContextAccessor.HttpContext?.Request.Form[Constants.SixLaborsCaptchaName].ToString();
 
-            var sessionStr = _httpContextAccessor.HttpContext.Session.GetString(Constants.SixLaborsCaptchaHeaderName);
-
-            var captchaResponse = _httpContextAccessor.HttpContext?.Request.Headers[Constants.SixLaborsCaptchaHeaderName];
-
-            // If this is a standard form post we get the token from the form values if not affected previously in the header
-            if (String.IsNullOrEmpty(captchaResponse) && (_httpContextAccessor.HttpContext?.Request.HasFormContentType ?? false))
-            {
-                captchaResponse = _httpContextAccessor.HttpContext.Request.Form[Constants.SixLaborsCaptchaHeaderName].ToString();
-            }
-
-            var isValid = !String.IsNullOrEmpty(captchaResponse) && await VerifyCaptchaResponseAsync(reCaptchaResponse);
+            var isValid = !String.IsNullOrEmpty(captchaRequest) && sessionCaptcha.Equals(captchaRequest, StringComparison.OrdinalIgnoreCase);
 
             if (!isValid)
             {
-                reportError("ReCaptcha", S["Failed to validate captcha"]);
+                reportError("SixLaborsCaptcha", S["Failed to validate captcha"]);
             }
 
-            return isValid;
+            return Task.FromResult(isValid);
         }
     }
 }

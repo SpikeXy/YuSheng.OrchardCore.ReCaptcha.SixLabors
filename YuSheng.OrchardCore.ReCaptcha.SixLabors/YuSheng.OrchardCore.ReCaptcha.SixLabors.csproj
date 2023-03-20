@@ -26,17 +26,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="OrchardCore.Navigation" Version="1.5.0" />
+		<PackageReference Include="OrchardCore.Settings.Core" Version="1.5.0" />
 		<PackageReference Include="OrchardCore.Users.Abstractions" Version="1.5.0" />
 		<PackageReference Include="SixLaborsCaptcha.Core" Version="0.2.2" />
 		<PackageReference Include="OrchardCore.Abstractions" Version="1.5.0" />
 		<PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="1.5.0" />
 		<PackageReference Include="OrchardCore.ContentManagement.Display" Version="1.5.0" />
 		<PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="ActionFilters\Detection\" />
-	  <Folder Include="Drivers\" />
 	</ItemGroup>
 
 

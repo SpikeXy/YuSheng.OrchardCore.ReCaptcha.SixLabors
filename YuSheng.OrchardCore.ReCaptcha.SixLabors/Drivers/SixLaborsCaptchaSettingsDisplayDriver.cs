@@ -43,6 +43,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
             return Initialize<SixLaborsCaptchaSettingsViewModel>("SixLaborsCaptchaSettings_Edit", model =>
             {
                 model.IpDetectionThreshold = settings.IpDetectionThreshold;
+                model.NumberOfCaptcha = settings.NumberOfCaptcha;
             })
                 .Location("Content")
                 .OnGroup(GroupId);
@@ -64,7 +65,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
                 if (await context.Updater.TryUpdateModelAsync(model, Prefix))
                 {
                     section.IpDetectionThreshold = model.IpDetectionThreshold;
-
+                    section.NumberOfCaptcha = model.NumberOfCaptcha;
                     // Release the tenant to apply settings.
                     await _shellHost.ReleaseShellContextAsync(_shellSettings);
                 }

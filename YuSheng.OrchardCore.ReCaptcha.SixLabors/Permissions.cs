@@ -10,8 +10,6 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
         public static readonly Permission SixLaborsCaptcha
                  = new Permission(nameof(SixLaborsCaptcha), "Manage SixLaborsCaptcha settings");
 
-
-
         public Task<IEnumerable<Permission>> GetPermissionsAsync()
         {
             return Task.FromResult(new[]

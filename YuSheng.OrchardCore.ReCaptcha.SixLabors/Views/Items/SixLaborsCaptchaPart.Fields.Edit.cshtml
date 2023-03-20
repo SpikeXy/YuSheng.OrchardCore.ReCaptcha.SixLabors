@@ -1,11 +1,12 @@
-@using OrchardCore.ReCaptcha.Forms
-@model OrchardCore.ReCaptcha.Forms.ReCaptchaPartViewModel
+@using YuSheng.OrchardCore.ReCaptcha.SixLabors.ViewModels
+@using YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
+@model SixLaborsCaptchaSettingsViewModel
 
 @{
-    var settingsUrl = Url.Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = OrchardCore.ReCaptcha.Drivers.ReCaptchaSettingsDisplayDriver.GroupId });
+    var settingsUrl = Url.Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = SixLaborsCaptchaSettingsDisplayDriver.GroupId });
     var hyperLinkAttributes = $"class=alert-link target=_blank href={settingsUrl}";
-    var successMessage = T["<a {0}>ReCaptcha settings</a> are configured.", hyperLinkAttributes];
-    var warningMessage = T["<a {0}>ReCaptcha settings</a> are not configured. The captcha will not be displayed.", hyperLinkAttributes];
+    var successMessage = T["<a {0}>SixLaborsCaptcha settings</a> are configured.", hyperLinkAttributes];
+    var warningMessage = T["<a {0}>SixLaborsCaptcha settings</a> are not configured. The captcha will not be displayed.", hyperLinkAttributes];
 }
 
 @{

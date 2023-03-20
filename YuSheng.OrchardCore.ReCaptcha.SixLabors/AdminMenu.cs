@@ -17,6 +17,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
 
         public Task BuildNavigationAsync(string name, NavigationBuilder builder)
         {
+            
             if (!String.Equals(name, "admin", StringComparison.OrdinalIgnoreCase))
             {
                 return Task.CompletedTask;
@@ -25,7 +26,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
             builder
                 .Add(S["Security"], security => security
                     .Add(S["Settings"], settings => settings
-                        .Add(S["Captcha"], S["Captcha"].PrefixPosition(), registration => registration
+                        .Add(S["SixLaborsCaptcha"], S["SixLaborsCaptcha"].PrefixPosition(), registration => registration
                             .Permission(Permissions.SixLaborsCaptcha)
                             .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = SixLaborsCaptchaSettingsDisplayDriver.GroupId })
                             .LocalNav()

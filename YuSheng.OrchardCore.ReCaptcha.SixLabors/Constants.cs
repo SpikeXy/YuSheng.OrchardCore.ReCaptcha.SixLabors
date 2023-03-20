@@ -8,6 +8,6 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
 {
     public class Constants
     {
-        public const string SixLaborsCaptchaHeaderName = "sixlabors-recaptcha";
+        public const string SixLaborsCaptchaName = "sixlabors-recaptcha";
     }
 }

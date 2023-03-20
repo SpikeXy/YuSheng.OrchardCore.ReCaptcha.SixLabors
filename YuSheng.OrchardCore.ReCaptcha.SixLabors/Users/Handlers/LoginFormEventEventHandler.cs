@@ -27,11 +27,10 @@ namespace OrchardCore.ReCaptcha.Users.Handlers
             return Task.CompletedTask;
         }
 
-        public async Task LoggingInAsync(string userName, Action<string, string> reportError)
+        public Task LoggingInAsync(string userName, Action<string, string> reportError)
         {
-
-            var captchaString = _sixLaborsCaptchaService.GetCaptchaString();
-            _httpContextAccessor.HttpContext.Session.SetString(Constants.SixLaborsCaptchaHeaderName, captchaString);
+  
+            return Task.CompletedTask;
         }
 
         public Task LoggingInFailedAsync(string userName)
