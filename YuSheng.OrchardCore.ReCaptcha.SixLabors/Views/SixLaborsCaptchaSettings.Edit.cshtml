@@ -4,14 +4,32 @@
 
 <div class="mb-3" asp-validation-class-for="IpDetectionThreshold">
     <label asp-for="IpDetectionThreshold">@T["Ip Detection Threshold"]</label>
-    <input asp-for="IpDetectionThreshold" class="form-control" type="text" />
+    <input asp-for="IpDetectionThreshold" class="form-control" type="number" />
     <span asp-validation-for="IpDetectionThreshold"></span>
     <span class="hint">@T["Set IpDetectionThreshold."]</span>
 </div>
 <div class="mb-3" asp-validation-class-for="NumberOfCaptcha">
-    <label asp-for="NumberOfCaptcha">@T["Number Of Captcha"]</label>
-    <input asp-for="NumberOfCaptcha" class="form-control" type="text" autocomplete="off" />
+    <label asp-for="NumberOfCaptcha">@T["Captcha Numbers"]</label>
+    <input asp-for="NumberOfCaptcha" class="form-control" type="number" autocomplete="off" />
     <span asp-validation-for="NumberOfCaptcha"></span>
     <span class="hint">@T["Set NumberOfCaptcha."]</span>
+</div>
+<div class="mb-3" asp-validation-class-for="TimeSpanMinuntes">
+    <label asp-for="TimeSpanMinuntes">@T["Lock Minuntes"]</label>
+    <input asp-for="TimeSpanMinuntes" class="form-control" type="number" autocomplete="off" />
+    <span asp-validation-for="TimeSpanMinuntes"></span>
+    <span class="hint">@T["Set TimeSpanMinuntes."]</span>
+</div>
+<div class="mb-3" asp-validation-class-for="DrawLines">
+    <label asp-for="DrawLines">@T["Captcha Draw Lines"]</label>
+    <input asp-for="DrawLines" class="form-control" type="number" autocomplete="off" />
+    <span asp-validation-for="DrawLines"></span>
+    <span class="hint">@T["Set NumberOfCaptcha."]</span>
+</div>
+<div class="mb-3" asp-validation-class-for="LimitExceededWarning">
+    <label asp-for="LimitExceededWarning">@T["Limit Exceeded Warning"]</label>
+    <input asp-for="LimitExceededWarning" class="form-control" type="text" autocomplete="off" />
+    <span asp-validation-for="LimitExceededWarning"></span>
+    <span class="hint">@T["Set LimitExceededWarning."]</span>
 </div>
 

@@ -3,15 +3,30 @@
     public class SixLaborsCaptchaSettings
     {
         /// <summary>
-        /// The maximum detection value of an IP address.
+        /// Maximum number of retries for a single IP address
         /// </summary>
-        public int IpDetectionThreshold { get; set; } = 5;
+        public int IpDetectionThreshold { get; set; } = 10;
 
-        public int NumberOfCaptcha { get; set; } = 6;
+        /// <summary>
+        /// Number of captcha digits
+        /// </summary>
+        public int NumberOfCaptcha { get; set; } = 4;
+
+        /// <summary>
+        /// Lockout time after exceeding the limit
+        /// </summary>
+        public int TimeSpanMinuntes { get; set; } = 3;
+
+        /// <summary>
+        /// SixLabors Captcha Draw Lines
+        /// </summary>
+        public byte DrawLines { get; set; } = 3;
+
+        public string LimitExceededWarning { get; set; } = "Your IP has exceeded the maximum number of requests allowed. Please try again later.";
 
         public bool IsValid()
         {
-            return IpDetectionThreshold>=1 && IpDetectionThreshold <= int.MaxValue && NumberOfCaptcha >= 1 && NumberOfCaptcha <= 20;
+            return IpDetectionThreshold >= 1 && IpDetectionThreshold <= int.MaxValue && NumberOfCaptcha >= 1 && NumberOfCaptcha <= 20;
         }
     }
 }

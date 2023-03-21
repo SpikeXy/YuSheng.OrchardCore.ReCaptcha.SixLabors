@@ -21,6 +21,9 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Configuration
 
             options.IpDetectionThreshold = settings.IpDetectionThreshold;
             options.NumberOfCaptcha = settings.NumberOfCaptcha;
+            options.TimeSpanMinuntes = settings.TimeSpanMinuntes;
+            options.DrawLines = settings.DrawLines;
+            options.LimitExceededWarning = settings.LimitExceededWarning;
         }
     }
 }

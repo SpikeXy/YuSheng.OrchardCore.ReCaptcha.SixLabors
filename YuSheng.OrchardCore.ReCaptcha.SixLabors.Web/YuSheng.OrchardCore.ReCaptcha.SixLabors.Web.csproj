@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\YuSheng.OrchardCore.ReCaptcha.SixLabors\YuSheng.OrchardCore.ReCaptcha.SixLabors.csproj" />
+	  <ProjectReference Include="..\YuSheng.OrchardCore.ReCaptcha.SixLabors\YuSheng.OrchardCore.ReCaptcha.SixLabors.csproj" />
 	</ItemGroup>
 
 

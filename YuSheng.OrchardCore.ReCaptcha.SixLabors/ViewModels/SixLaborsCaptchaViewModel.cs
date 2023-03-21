@@ -9,6 +9,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.ViewModels
 
         [Required(ErrorMessage = "Captcha is required.")]
         [Display(Name = "SixLaborsCaptcha")]
+        [StringLength(10)]
         public string SixLaborsCaptcha { get; set; }
     }
 }

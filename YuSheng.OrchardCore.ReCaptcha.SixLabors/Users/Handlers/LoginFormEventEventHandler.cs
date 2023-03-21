@@ -1,9 +1,8 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using OrchardCore.Users;
 using OrchardCore.Users.Events;
-using YuSheng.OrchardCore.ReCaptcha.SixLabors;
+using System;
+using System.Threading.Tasks;
 using YuSheng.OrchardCore.ReCaptcha.SixLabors.Services;
 
 namespace OrchardCore.ReCaptcha.Users.Handlers
@@ -29,9 +28,7 @@ namespace OrchardCore.ReCaptcha.Users.Handlers
 
         public Task LoggingInAsync(string userName, Action<string, string> reportError)
         {
-            reportError("ReCaptcha", "Failed to validate captcha");
-            return Task.FromResult(false);
-            //return Task.CompletedTask;
+            return _sixLaborsCaptchaService.ValidateCaptchaAsync(reportError);
         }
 
         public Task LoggingInFailedAsync(string userName)

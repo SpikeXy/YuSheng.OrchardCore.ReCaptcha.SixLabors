@@ -44,6 +44,9 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
             {
                 model.IpDetectionThreshold = settings.IpDetectionThreshold;
                 model.NumberOfCaptcha = settings.NumberOfCaptcha;
+                model.TimeSpanMinuntes = settings.TimeSpanMinuntes;
+                model.DrawLines = settings.DrawLines;
+                model.LimitExceededWarning = settings.LimitExceededWarning;
             })
                 .Location("Content")
                 .OnGroup(GroupId);
@@ -61,11 +64,13 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
             if (context.GroupId == GroupId)
             {
                 var model = new SixLaborsCaptchaSettingsViewModel();
-
                 if (await context.Updater.TryUpdateModelAsync(model, Prefix))
                 {
                     section.IpDetectionThreshold = model.IpDetectionThreshold;
                     section.NumberOfCaptcha = model.NumberOfCaptcha;
+                    section.TimeSpanMinuntes = model.TimeSpanMinuntes;
+                    section.DrawLines = model.DrawLines;
+                    section.LimitExceededWarning = model.LimitExceededWarning;
                     // Release the tenant to apply settings.
                     await _shellHost.ReleaseShellContextAsync(_shellSettings);
                 }

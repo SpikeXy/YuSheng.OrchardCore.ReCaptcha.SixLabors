@@ -28,6 +28,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
             builder.UseSession();
+            //builder.UseStaticFiles();
            // routes.MapAreaControllerRoute(
            //    name: "SixLaborsCaptcha",
            //    areaName: "JMBCore.Project.Common.JMBBackend",

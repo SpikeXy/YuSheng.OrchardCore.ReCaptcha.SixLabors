@@ -1,7 +1,7 @@
-using System;
-using System.Threading.Tasks;
 using OrchardCore.Users;
 using OrchardCore.Users.Events;
+using System;
+using System.Threading.Tasks;
 using YuSheng.OrchardCore.ReCaptcha.SixLabors.Services;
 
 namespace OrchardCore.ReCaptcha.Users.Handlers
