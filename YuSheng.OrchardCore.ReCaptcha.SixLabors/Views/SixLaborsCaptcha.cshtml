@@ -1,0 +1,17 @@
+@using YuSheng.OrchardCore.ReCaptcha.SixLabors.ViewModels
+
+@model ShapeViewModel<SixLaborsCaptchaViewModel>
+@if (Model.Value.SettingsAreConfigured)
+{
+
+    <img src="@Model.Value.CaptchaImgBase64" />
+    <div class="mb-3">
+        <label asp-for="Value.SixLaborsCaptcha">@T["SixLabors Captcha"]</label>
+        <input asp-for="Value.SixLaborsCaptcha" class="form-control" autofocus tabindex="1" />
+        <span asp-validation-for="Value.SixLaborsCaptcha" class="text-danger"></span>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">@T["SixLaborsCaptcha settings are not configured."]</div>
+}

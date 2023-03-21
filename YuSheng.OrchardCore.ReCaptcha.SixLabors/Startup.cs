@@ -38,13 +38,6 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddSession();
-            services.Configure<TemplateOptions>(o =>
-            {
-                o.MemberAccessStrategy.Register<SixLaborsCaptchaPart>();
-            });
-
-            services.AddContentPart<SixLaborsCaptchaPart>()
-                .UseDisplayDriver<SixLaborsCaptchaPartDisplayDriver>();
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddTransient<IConfigureOptions<SixLaborsCaptchaSettings>, SixLaborsCaptchaSettingsConfiguration>();

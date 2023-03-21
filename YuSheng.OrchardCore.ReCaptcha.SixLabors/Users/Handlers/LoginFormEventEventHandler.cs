@@ -29,8 +29,9 @@ namespace OrchardCore.ReCaptcha.Users.Handlers
 
         public Task LoggingInAsync(string userName, Action<string, string> reportError)
         {
-  
-            return Task.CompletedTask;
+            reportError("ReCaptcha", "Failed to validate captcha");
+            return Task.FromResult(false);
+            //return Task.CompletedTask;
         }
 
         public Task LoggingInFailedAsync(string userName)

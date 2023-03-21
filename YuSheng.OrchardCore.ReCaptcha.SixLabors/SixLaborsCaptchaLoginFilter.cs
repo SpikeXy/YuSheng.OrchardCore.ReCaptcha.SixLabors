@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Layout;
+using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Settings;
 using System;
 using System.Threading.Tasks;
 using YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers;
 using YuSheng.OrchardCore.ReCaptcha.SixLabors.Services;
+using YuSheng.OrchardCore.ReCaptcha.SixLabors.ViewModels;
 
 namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
 {
@@ -44,19 +46,25 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
             }
             var captchaString = _sixLaborsCaptchaService.GetCaptchaString();
             _httpContextAccessor.HttpContext.Session.SetString(Constants.SixLaborsCaptchaName, captchaString);
-
-            var part = new SixLaborsCaptchaPart();
-            //part.CaptchaImgBase64 = _sixLaborsCaptchaService.GetCaptchaPic(captchaString);
-            var myShape = await _shapeFactory.CreateAsync("SixLaborsCaptchaPart", Arguments.From(new { SixLaborsCaptchaPart = part })); // 创建 MyContentPart 的 shape
-
+            var model = new SixLaborsCaptchaViewModel();
+            model.SettingsAreConfigured = true;
+            var imageBytes = _sixLaborsCaptchaService.GetCaptchaPic(captchaString);
+            string base64 = Convert.ToBase64String(imageBytes);
+            model.CaptchaImgBase64 = $"data:image/jpeg;base64,{base64}";
 
             var layout = await _layoutAccessor.GetLayoutAsync();
+            var afterLoginZone = layout.Zones["AfterLogin"];
+            await afterLoginZone.AddAsync(new ShapeViewModel<SixLaborsCaptchaViewModel>("SixLaborsCaptcha", model));
+
+
 
             //var afterForgotPasswordZone = layout.Zones["AfterForgotPassword"];
             //await afterForgotPasswordZone.AddAsync(await _shapeFactory.CreateAsync("SixLaborsCaptchaPart"));
 
-            var afterRegisterZone = layout.Zones["AfterRegister"];
-            await afterRegisterZone.AddAsync(await _shapeFactory.CreateAsync("SixLaborsCaptchaPart"));
+            //var afterRegisterZone = layout.Zones["AfterRegister"];
+            ////await afterRegisterZone.AddAsync(await _shapeFactory.CreateAsync("SixLaborsCaptchaPart"));
+            //await afterRegisterZone.AddAsync(part);
+
 
             //var afterResetPasswordZone = layout.Zones["AfterResetPassword"];
             //await afterResetPasswordZone.AddAsync(await _shapeFactory.CreateAsync("SixLaborsCaptchaPart"));
