@@ -16,14 +16,25 @@
 		<Company>spike</Company>
 		<Copyright>spike 2023</Copyright>
 		<PackageProjectUrl>https://github.com/SpikeXy/YuSheng.OrchardCore.ReCaptcha.SixLabors</PackageProjectUrl>
-		<!--<PackageIcon>horse-face-front-view-sketch.png</PackageIcon>-->
-		<!--<PackageReadmeFile>../README.md</PackageReadmeFile>-->
 		<RepositoryUrl>https://github.com/SpikeXy/YuSheng.OrchardCore.ReCaptcha.SixLabors</RepositoryUrl>
 		<AssemblyVersion>0.0.1</AssemblyVersion>
+		<PackageIcon>horse-face-front-view-sketch.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Content Include="horse-face-front-view-sketch.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="horse-face-front-view-sketch.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -3,16 +3,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:52873",
+      "applicationUrl": "http://localhost:47317",
       "sslPort": 0
     }
   },
   "profiles": {
-    "YuSheng.OrchardCore.ReCaptcha.SixLabors.Web": {
+    "Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5299",
+      "applicationUrl": "http://localhost:5018",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

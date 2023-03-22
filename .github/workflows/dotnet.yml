@@ -1,0 +1,38 @@
+name: Build and Publish NuGet Package
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  PROJECT_NAME: MyProject
+  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v1
+
+    - name: 'Restore dependencies with NuGet'
+      run: dotnet restore
+
+    - name: 'Build'
+      run: dotnet build
+
+    - name: 'Test'
+      run: dotnet test
+
+    - name: 'Pack'
+      run: |
+        dotnet build --configuration Release
+
+    - name: 'Publish'
+      run: |
+        dotnet nuget push "./YuSheng.OrchardCore.ReCaptcha.SixLabors/bin/Release/*.nupkg" -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
