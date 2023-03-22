@@ -33,6 +33,9 @@ jobs:
       run: |
         dotnet build --configuration Release
 
+    - name: 'Pwd'
+      run: |
+        pwd
     - name: 'Publish'
       run: |
         dotnet nuget push "./YuSheng.OrchardCore.ReCaptcha.SixLabors/YuSheng.OrchardCore.ReCaptcha.SixLabors/bin/Release/*.nupkg" -k $NUGET_API_KEY -n true -s https://api.nuget.org/v3/index.json --skip-duplicate
