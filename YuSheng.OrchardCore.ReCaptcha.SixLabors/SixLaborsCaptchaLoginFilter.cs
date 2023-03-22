@@ -47,7 +47,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors
             _httpContextAccessor.HttpContext.Session.SetString(Constants.SixLaborsCaptchaName, captchaString);
             var model = new SixLaborsCaptchaViewModel();
             model.SettingsAreConfigured = true;
-            var imageBytes = _sixLaborsCaptchaService.GetCaptchaPic(captchaString, _settings.DrawLines);
+            var imageBytes = _sixLaborsCaptchaService.GetCaptchaPic(captchaString, _settings.DrawLines, _settings.CaptchatHeight);
             string base64 = Convert.ToBase64String(imageBytes);
             model.CaptchaImgBase64 = $"data:image/jpeg;base64,{base64}";
             var shape = new ShapeViewModel<SixLaborsCaptchaViewModel>("SixLaborsCaptcha", model);

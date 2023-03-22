@@ -24,6 +24,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Configuration
             options.TimeSpanMinuntes = settings.TimeSpanMinuntes;
             options.DrawLines = settings.DrawLines;
             options.LimitExceededWarning = settings.LimitExceededWarning;
+            options.CaptchatHeight = settings.CaptchatHeight;
         }
     }
 }

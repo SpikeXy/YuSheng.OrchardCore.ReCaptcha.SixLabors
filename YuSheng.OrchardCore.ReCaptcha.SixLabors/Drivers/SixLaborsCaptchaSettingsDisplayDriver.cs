@@ -47,6 +47,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
                 model.TimeSpanMinuntes = settings.TimeSpanMinuntes;
                 model.DrawLines = settings.DrawLines;
                 model.LimitExceededWarning = settings.LimitExceededWarning;
+                model.CaptchatHeight = settings.CaptchatHeight;
             })
                 .Location("Content")
                 .OnGroup(GroupId);
@@ -71,6 +72,7 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Drivers
                     section.TimeSpanMinuntes = model.TimeSpanMinuntes;
                     section.DrawLines = model.DrawLines;
                     section.LimitExceededWarning = model.LimitExceededWarning;
+                    section.CaptchatHeight = model.CaptchatHeight;
                     // Release the tenant to apply settings.
                     await _shellHost.ReleaseShellContextAsync(_shellSettings);
                 }

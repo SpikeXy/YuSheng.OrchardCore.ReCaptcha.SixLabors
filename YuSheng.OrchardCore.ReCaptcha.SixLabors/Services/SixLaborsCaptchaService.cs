@@ -69,12 +69,13 @@ namespace YuSheng.OrchardCore.ReCaptcha.SixLabors.Services
             var key = Extensions.GetUniqueKey(number);
             return key;
         }
-        public byte[] GetCaptchaPic(string key, byte drawLinesCount)
+        public byte[] GetCaptchaPic(string key, byte drawLinesCount, ushort height)
         {
             var random = new Random();
             var slc = new SixLaborsCaptchaModule(new SixLaborsCaptchaOptions
             {
                 DrawLines = drawLinesCount,
+                Height = height,
                 TextColor = _colors.ToList().OrderBy(x => random.Next()).Take(3).ToArray()
             });
             var bytes = slc.Generate(key);

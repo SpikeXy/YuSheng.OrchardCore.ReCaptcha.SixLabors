@@ -26,6 +26,12 @@
     <span asp-validation-for="DrawLines"></span>
     <span class="hint">@T["Set NumberOfCaptcha."]</span>
 </div>
+<div class="mb-3" asp-validation-class-for="CaptchatHeight">
+    <label asp-for="CaptchatHeight">@T["Captchat Img Height"]</label>
+    <input asp-for="CaptchatHeight" class="form-control" type="number" autocomplete="off" />
+    <span asp-validation-for="CaptchatHeight"></span>
+    <span class="hint">@T["Set Captchat Img Height."]</span>
+</div>
 <div class="mb-3" asp-validation-class-for="LimitExceededWarning">
     <label asp-for="LimitExceededWarning">@T["Limit Exceeded Warning"]</label>
     <input asp-for="LimitExceededWarning" class="form-control" type="text" autocomplete="off" />

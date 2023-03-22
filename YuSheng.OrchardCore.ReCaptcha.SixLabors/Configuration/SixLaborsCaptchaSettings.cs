@@ -21,7 +21,10 @@
         /// SixLabors Captcha Draw Lines
         /// </summary>
         public byte DrawLines { get; set; } = 3;
-
+        /// <summary>
+        /// SixLabors Captcha Img Height
+        /// </summary>
+        public ushort CaptchatHeight { get; set; } = 38;
         public string LimitExceededWarning { get; set; } = "Your IP has exceeded the maximum number of requests allowed. Please try again later.";
 
         public bool IsValid()
