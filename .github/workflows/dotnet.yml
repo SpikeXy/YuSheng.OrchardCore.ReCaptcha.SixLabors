@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.2
       with:
@@ -19,7 +19,8 @@ jobs:
         ref: ${{ github.ref }}
     - name: Setup dotnet
       uses: actions/setup-dotnet@v1
-
+      with:
+        dotnet-version: 6.0.x
     - name: 'Restore dependencies with NuGet'
       run: dotnet restore
 
